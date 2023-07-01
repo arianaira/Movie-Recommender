@@ -14,10 +14,10 @@ background-size : cover;
 background-color: rgba(0, 0, 0, 0);
 }
 
-#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.css-1y4p8pa.e1g8pov64 > div:nth-child(1) > div > div.css-12ttj6m.en8akda1 > div:nth-child(1) > div > div:nth-child(4) > div > div > button
+[data-testid = "stFormSubmitButton"]
 {
     background-color: darkred;
-    width : 670px;
+    width : 650px;
     color: white;
 }
 
@@ -27,6 +27,15 @@ background-color: rgba(0, 0, 0, 0);
     border-color: red;
     border-width: 100px;
 }
+
+
+[data-testid = "stMarkdownContainer"].css-1vbkxwb.eqr7zpz4
+{
+    background-color: darkred;
+    width : 650px;
+    color: white;
+}
+
 </style>
 """
 
