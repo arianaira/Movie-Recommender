@@ -14,12 +14,12 @@ background-size : cover;
 background-color: rgba(0, 0, 0, 0);
 }
 
-[data-testid = "stFormSubmitButton"]
-{
-    background-color: darkred;
-    width : 650px;
-    color: white;
-}
+# [data-testid = "stFormSubmitButton"]
+# {
+#     background-color: darkred;
+#     width : 650px;
+#     color: white;
+# }
 
 [data-testid = "stVerticalBlock"]
 {
@@ -29,12 +29,12 @@ background-color: rgba(0, 0, 0, 0);
 }
 
 
-button > div[data-testid = "stMarkdownContainer"].css-1vbkxwb.eqr7zpz4
-{
-    background-color: darkred;
-    width : 650px;
-    color: white;
-}
+# button > div[data-testid = "stMarkdownContainer"].css-1vbkxwb.eqr7zpz4
+# {
+#     background-color: darkred;
+#     width : 650px;
+#     color: white;
+# }
 
 </style>
 """
