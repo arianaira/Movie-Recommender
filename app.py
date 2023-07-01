@@ -29,7 +29,7 @@ background-color: rgba(0, 0, 0, 0);
 }
 
 
-div[data-testid = "stMarkdownContainer"].css-1vbkxwb.eqr7zpz4
+button > div[data-testid = "stMarkdownContainer"].css-1vbkxwb.eqr7zpz4
 {
     background-color: darkred;
     width : 650px;
