@@ -113,7 +113,8 @@ with st.form('my_form'):
             st.markdown( "Please wait a few seconds so we can generate your top 10 movies")
             top_10_id = get_top_rated_movies(final, model, movies, device, 10)
 
-            st.markdown("top 10 movie IDS : " + top_10_id)
+            st.markdown("top 10 movie IDS : ")
+            st.markdown(top_10_id)
 
             # showing top 10 information for user
             for movie_id in top_10_id:
