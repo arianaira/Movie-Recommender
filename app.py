@@ -50,9 +50,6 @@ movieIds = links['movieId'].unique()
 ratings = ratings[ratings['movieId'].isin(movieIds)]
 movies = ratings["movieId"].unique()
 
-tmdbIds = links['tmdbId'].unique()
-df = df[df['id'].isin(tmdbIds)]
-
 
 titles = df['title'].tolist()
 final = []
@@ -117,6 +114,7 @@ with st.form('my_form'):
             st.markdown( "Please wait a few seconds so we can generate your top 10 movies")
             top_10_id = get_top_rated_movies(final, model, movies, device, 20)
             top_10_id = top_10_id[10:]
+
             st.markdown("top 10 movie IDS : ")
             st.markdown(top_10_id)
 
@@ -128,17 +126,23 @@ with st.form('my_form'):
                 response = requests.get(url)
                 response = response.json()
                 poster = response['poster_path']
-                image_data = "https://image.tmdb.org/t/p/w500" + poster
 
+                #title of the movie
                 centered_header = f'<h1 style="text-align: center;">{df.loc[df["id"] == tmdb_id, "title"].iloc[0]}</h1>'
                 st.markdown(centered_header, unsafe_allow_html=True)
-                st.markdown(
-                    f'<div style="display: flex; justify-content: center;">'
-                    f'<img src="{image_data}" style="width: 300px;">'
-                    f'</div>',
-                    unsafe_allow_html=True
-                )
-                st.markdown("")
+                
+                #poster
+                if poster is not None:
+                    image_data = "https://image.tmdb.org/t/p/w500" + poster
+                    st.markdown(
+                        f'<div style="display: flex; justify-content: center;">'
+                        f'<img src="{image_data}" style="width: 300px;">'
+                        f'</div>',
+                        unsafe_allow_html=True
+                    )
+                    st.markdown("")
+
+                #overview
                 with st.expander("Click to see the overview"):
                     st.markdown(df[df["id"] == tmdb_id]["overview"].iloc[0])
         
