@@ -111,8 +111,8 @@ with st.form('my_form'):
             st.markdown("your input : ")
             st.markdown( final)
             st.markdown( "Please wait a few seconds so we can generate your top 10 movies")
-            top_10_id = get_top_rated_movies(final, model, movies, device, 10)
-
+            top_10_id = get_top_rated_movies(final, model, movies, device, 20)
+            top_10_id = top_10_id[10:]
             st.markdown("top 10 movie IDS : ")
             st.markdown(top_10_id)
 
