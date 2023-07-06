@@ -42,8 +42,8 @@ button > div[data-testid = "stMarkdownContainer"]
 
 # loading datasets
 df = pd.read_csv("cleaned.csv")
-ratings = pd.read_csv("..\\ratings_small.csv") # path to ratings_small dataset
-links = pd.read_csv("..\\links.csv")
+ratings = pd.read_csv("ratings_small.csv") # path to ratings_small dataset
+links = pd.read_csv("links.csv")
 
 #limitting ratings
 movieIds = links['movieId'].unique()
