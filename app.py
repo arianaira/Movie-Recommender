@@ -50,6 +50,10 @@ movieIds = links['movieId'].unique()
 ratings = ratings[ratings['movieId'].isin(movieIds)]
 movies = ratings["movieId"].unique()
 
+tmdbIds = links['tmdbId'].uniique()
+df = df[df['id'].isin(tmdbIds)]
+
+
 titles = df['title'].tolist()
 final = []
 
