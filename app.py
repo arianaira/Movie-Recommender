@@ -50,12 +50,19 @@ movieIds = links['movieId'].unique()
 ratings = ratings[ratings['movieId'].isin(movieIds)]
 movies = ratings["movieId"].unique()
 
+# limitting df
+tmdbIds = links['tmdbId'].unique()
+df = df[df['id'].isin(tmdbIds)]
 
+movieIds = ratings['movieId'].unique().tolist()
+tmdbIds = links.loc[links['movieId'].isin(movieIds), 'tmdbId'].tolist()
+df = df[df['id'].isin(tmdbIds)]
+
+
+
+# getting titles to load in dropdown
 titles = df['title'].tolist()
 final = []
-
-def add_selectbox():
-    st.selectbox("New Selectbox", titles)
 
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
@@ -63,7 +70,7 @@ with open("style.css") as source_des:
     st.markdown(f"<style>{source_des.read()}</style>", unsafe_allow_html=True)
 st.markdown("<h1 style ='text-align: center;'>Movie Recommender</h1>", unsafe_allow_html=True)
 
-# main form------------------------------------------------------------
+# main form----------------------------------------------------------------------
 with st.form('my_form'):
     st.markdown("""
     <style>
@@ -96,8 +103,12 @@ with st.form('my_form'):
                 temp = []
                 
                 # getting movie id from input title
-                tmdb_id = df.loc[df['title'] == title, 'id'].iloc[0]
-                movie_id = links.loc[links['tmdbId'] == tmdb_id, 'movieId'].iloc[0]
+                df_copy = df.copy()
+                tmdb_id = df_copy.loc[df_copy['title'] == title, 'id'].iloc[0]
+
+                links_copy = links.copy()
+                movie_id = links_copy.loc[links_copy['tmdbId'] == tmdb_id, 'movieId'].iloc[0]
+
                 
                 temp.append(movie_id)
                 temp.append(rate[i])
@@ -120,7 +131,8 @@ with st.form('my_form'):
 
             # showing top 10 information for user
             for movie_id in top_10_id:
-                tmdb_id = links.loc[links['movieId'] == movie_id, 'tmdbId'].iloc[0]
+                copys = links.copy()
+                tmdb_id = copys.loc[copys['movieId'] == movie_id, 'tmdbId'].iloc[0]
 
                 url = "https://api.themoviedb.org/3/movie/{}?api_key=73e889cc3c939a8d7a8ae0e57794a4bc".format(tmdb_id)
                 response = requests.get(url)
